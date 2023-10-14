@@ -1,3 +1,4 @@
+
 version: 2
 
 orbs:
@@ -134,3 +135,17 @@ jobs:
           name: kube cluster
           command: |
             kubectl get services
+workflows:
+  deployment:
+    jobs:
+      - build
+      - build_pushImage:
+          requires:
+            - build
+      - create-eks-cluster:
+          requires:
+            - build_pushImage
+      - test-cluster:
+          cluster-name: capstone
+          requires:
+            - create-eks-cluster
