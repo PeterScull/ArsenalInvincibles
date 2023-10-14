@@ -99,4 +99,21 @@ jobs:
           command: |
             docker login -u "$DOCKER_USR" -p "$DOCKER_PSWRD" docker.io
             docker push pscull01/capstone:latest  
-
+  create-eks-cluster:
+    docker:
+      - image: python:3.7-alpine3.11
+    steps:
+      - checkout
+      - run:
+          name: install tar & gzip
+          command: |
+            apk add --update tar gzip nodejs npm curl
+      - install_awscli
+      - install_aws_eks
+      - install_kubectl
+      - run:
+          name: Create AWS EKS cluster
+          command: |
+            eksctl create cluster --name ArsenalInvincibles --region us-east-1 --zones us-east-1a,us-east-1b,us-east-1c,us-east-1d
+            eksctl utils describe-stacks --region us-east-1 --cluster=ArsenalInvincibles
+            eksctl get cluster --name=ArsenalInvinvicibles --region=us-east-1
