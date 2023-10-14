@@ -99,3 +99,4 @@ jobs:
           command: |
             docker login -u "$DOCKER_USR" -p "$DOCKER_PSWRD" docker.io
             docker push pscull01/capstone:latest  
+
