@@ -92,13 +92,13 @@ jobs:
           command: |
             docker logout
             docker build -t capstone .
-            docker tag capstone pscull01/ArsenalInvincibles:latest
+            docker tag capstone pscull01/arsenalinvincibles:latest
             docker image ls
       - run:
           name: push to dockerhub
           command: |
             docker login -u "$DOCKER_USR" -p "$DOCKER_PSWRD" docker.io
-            docker push pscull01/ArsenalInvincibles:latest  
+            docker push pscull01/arsenalinvincibles:latest  
   
   create-eks-cluster:
     docker:
@@ -115,9 +115,9 @@ jobs:
       - run:
           name: Create AWS EKS cluster
           command: |
-            eksctl create cluster --name ArsenalInvincibles --region us-east-1 --zones us-east-1a,us-east-1b,us-east-1c,us-east-1d
-            eksctl utils describe-stacks --region us-east-1 --cluster=ArsenalInvincibles
-            eksctl get cluster --name=ArsenalInvinvicibles --region=us-east-1
+            eksctl create cluster --name arsenalinvincibles --region us-east-1 --zones us-east-1a,us-east-1b,us-east-1c,us-east-1d
+            eksctl utils describe-stacks --region us-east-1 --cluster=arsenalinvincibles
+            eksctl get cluster --name=arsenalinvincibles --region=us-east-1
   
   test-cluster:
     docker:
