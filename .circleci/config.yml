@@ -117,7 +117,7 @@ jobs:
           command: |
             eksctl create cluster --name arsenalinvincibles --region us-east-1 
             eksctl utils describe-stacks --region us-east-1 --cluster=arsenalinvincibles
-            eksctl get cluster --name=arsenalinvincibles --region=us-east-1
+            eksctl get cluster --name=arsenalinvincibles --region us-east-1
   
   test-cluster:
     docker:
