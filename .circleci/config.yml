@@ -77,3 +77,25 @@ jobs:
           command: |
             . venv/bin/activate 
             make lint 
+  build_pushImage:
+    docker:
+      - image: docker:stable
+    steps:
+      - checkout
+      - run:
+          name: install curl
+          command: |
+            apk add --update curl
+      - setup_remote_docker
+      - run:
+          name: build docker image
+          command: |
+            docker logout
+            docker build -t capstone .
+            docker tag capstone jankes11/capstone:latest
+            docker image ls
+      - run:
+          name: push to dockerhub
+          command: |
+            docker login -u "$DOCKER_USR" -p "$DOCKER_PSWRD" docker.io
+            docker push pscull01/capstone:latest  
