@@ -92,13 +92,13 @@ jobs:
           command: |
             docker logout
             docker build -t capstone .
-            docker tag capstone jankes11/capstone:latest
+            docker tag capstone pscull01/ArsenalInvincibles:latest
             docker image ls
       - run:
           name: push to dockerhub
           command: |
             docker login -u "$DOCKER_USR" -p "$DOCKER_PSWRD" docker.io
-            docker push pscull01/capstone:latest  
+            docker push pscull01/ArsenalInvincibles:latest  
   
   create-eks-cluster:
     docker:
