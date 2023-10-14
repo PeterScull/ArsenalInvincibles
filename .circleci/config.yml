@@ -162,7 +162,7 @@ jobs:
     parameters:
       cluster-name:
         description: |
-          capstone
+          Arsenal invicibles cluster
         type: string
     steps:
       - checkout
