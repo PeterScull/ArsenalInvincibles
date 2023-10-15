@@ -58,6 +58,7 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "requirements.txt" }}
             - v1-dependencies-
+  
       - run:
           name: install dependencies
           command: |
@@ -91,8 +92,8 @@ jobs:
           name: build docker image
           command: |
             docker logout
-            docker build -t capstone .
-            docker tag capstone pscull01/arsenalinvincibles:latest
+            docker build -t arsenalinvincibles .
+            docker tag arsenalinvincibles pscull01/arsenalinvincibles:latest
             docker image ls
       - run:
           name: push to dockerhub
@@ -142,7 +143,7 @@ jobs:
     parameters: 
       cluster-name:
         description: |
-          capstone
+          Invicibles cluster
         type: string
     steps:
       - kubernetes/install
