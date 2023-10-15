@@ -175,7 +175,8 @@ jobs:
       - kubernetes/create-or-update-resource:
           get-rollout-status: true
           resource-file-path: deploy.yml
-          resource-name: arsenalinvincibles/capstone
+          resource-name: deployment/arsenalinvincibles
+
 
 workflows:
   deployment:
@@ -188,14 +189,14 @@ workflows:
           requires:
             - build_pushImage
       - test-cluster:
-          cluster-name: capstone
+          cluster-name: arsenalinvincibles
           requires:
             - create-eks-cluster
       - deploy-cluster:
-          cluster-name: capstone
+          cluster-name: arsenalinvincibles
           requires:
             - test-cluster
       - verify-cluster:
-          cluster-name: capstone
+          cluster-name: arsenalinvincibles
           requires:
             - deploy-cluster
