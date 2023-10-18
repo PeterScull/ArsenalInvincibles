@@ -155,7 +155,7 @@ jobs:
       - kubernetes/create-or-update-resource:
           get-rollout-status: true
           resource-file-path: deploy.yml
-          resource-name: depolyment/arsenalinvincibles
+          resource-name: depoly/arsenalinvincibles
 
 
   verify-cluster:
