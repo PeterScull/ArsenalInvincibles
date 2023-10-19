@@ -27,3 +27,18 @@ spec:
           name: newimage
           ports:
             - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: arsenalinvincibles
+  labels:
+    app: arsenalinvincibles
+spec:
+  type: LoadBalancer
+  selector:
+    app: arsenalinvincibles
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
